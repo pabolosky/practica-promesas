@@ -15,19 +15,21 @@ function getIdFromButton(){
     return id
 }
 
-function mostrarPaisAsync(id){
-    
-        getPais(id)
-        .then((pais) => {
-            console.log(pais, "Pais")
-            salida.textContent = `El país del sitio buscado es ${pais}`
-        })
-        .catch((error) => {
-            console.log(error, "error")
-            salida.textContent = error
-        })
-    
-}
+async function mostrarPaisAsync(id){
+    try{
+        let pais = await getPais(id)
+        console.log(pais, "pais")
+
+        salida.textContent = `El país del sitio buscado es ${pais}`
+    }catch(error){
+        console.log("Error:", error.message)
+    }finally{
+        console.log("Final")
+    }
+}   
+
+
+
 
 
 
