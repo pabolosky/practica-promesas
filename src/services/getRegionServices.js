@@ -5,10 +5,10 @@ export function getRegion(id){
     let promesa = new Promise((resolve, reject) =>{
 
         setTimeout(()=>{
-            let pais = sitios.find( e => e.id === id) ?.Region
+            let region = sitios.find( e => e.id === id) ?.Region
 
-            if(pais){
-                resolve(pais)
+            if(region){
+                resolve(region)
             }else{
                 reject(`Sitio con id ${id} no existe`)
             }
