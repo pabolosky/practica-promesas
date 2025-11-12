@@ -1,16 +1,10 @@
-import { getEmpleado } from "./services/getEmpleadoServices.js"
-import { getSalario } from "./services/getSalarioServices.js"
+import { getPais } from "./services/getPaisServices.js"
+import { getRegion } from "./services/getRegionServices.js"
 
-let btn = document.getElementById("userNumber")
-let salida = document.getElementById("usuarios")
+let salida = document.getElementById("show")
 
 function getIdFromButton(){
-
-    console.log("---------------------------------------")
-    console.log("Llamada a la función GET ID FROM BUTTON")
-    console.log("---------------------------------------")
-
-
+    
     let input = prompt("Introduce el número del usuario")
     let id = Number(input)
 
@@ -21,73 +15,32 @@ function getIdFromButton(){
     return id
 }
 
-// Ejerciocio 1
-
-function findEmpleado(id){
-    console.log("----------------------------------")
-    console.log("Llamada a la función FIND EMPLEADO")
-    console.log("----------------------------------")
-
-    Promise.all([getEmpleado(id), getSalario(id)])
-    .then(([empleado, salario]) => {
-        console.log("PROMISE RESOLVE, PASO POR EL THEN")
-        console.log(empleado, "empleado")
-        console.log(salario, "salario")
-
-        let p = document.createElement("p")
-        p.textContent = `El empleado buscado es: ${empleado} con salario ${salario}`
-        salida.textContent = err
-    })
-    .catch((err) =>{
-        console.log("PROMISE REJECT, PASO POR EL CATCH")
-        console.log(err, "err")
-        salida.textContent = err
-    })
-
+function mostrarPaisAsync(id){
+    
+        getPais(id)
+        .then((pais) => {
+            console.log(pais, "Pais")
+            salida.textContent = `El país del sitio buscado es ${pais}`
+        })
+        .catch((error) => {
+            console.log(error, "error")
+            salida.textContent = error
+        })
+    
 }
 
-// Ejercicio 2
-
-// function findEmpleado(id){
-//     console.log("----------------------------------")
-//     console.log("Llamada a la función FIND EMPLEADO")
-//     console.log("----------------------------------")
-
-//     getEmpleado(id)
-//     .then((empleado) => {
-//         console.log("PROMISE RESOLVE, PASO POR EL THEN")
-//         console.log(empleado, "empleado")
-//         salida.textContent = `El empleado buscaod es ${empleado}`
-//     })
-//     .catch((error) => {
-//         console.log("PROMISE REJECT, PASO POR EL CATCH")
-//         console.log(error, "error")
-//         salida.textContent = error
-//     })
-
-// }
 
 
-
-
-btn.addEventListener("click", () =>{
-
-    console.log("---------------------------------------")
-    console.log("Llamada a la función ADD EVENT LISTENER")
-    console.log("---------------------------------------")
+document.getElementById("btn").addEventListener("click", () =>{
 
     try{
         let id = getIdFromButton()
-        findEmpleado(id)
+        mostrarPaisAsync(id)
     } catch (error){
         salida.textContent = error.message
     }
 
 })
-
-
-
-
 
 
 

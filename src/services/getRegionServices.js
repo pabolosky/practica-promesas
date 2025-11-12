@@ -1,20 +1,16 @@
-import { salarios } from "../../public/data/info"
+import { sitios } from "../../public/data/info.js"
 
-export function getSalario(id){
-
-    console.log("---------------------------------")
-    console.log("Llamada a la función GET SALARIO")
-    console.log("---------------------------------")
+export function getRegion(id){
 
     let promesa = new Promise((resolve, reject) =>{
 
         setTimeout(()=>{
-            let salario = salarios.find( e => e.id === id) ?.salario
+            let pais = sitios.find( e => e.id === id) ?.Region
 
-            if(salario){
-                resolve(salario)
+            if(pais){
+                resolve(pais)
             }else{
-                reject(`No hay salario para el id ${id}`)
+                reject(`Sitio con id ${id} no existe`)
             }
         }, 800)
     })
