@@ -1,14 +1,14 @@
-export let empleados = [
+export let paises = [
     {
-        "id" : 1,
-        "nombre" : "Juan"
+        "País" : "España",
+        "Región" : "Asturias"
     },
     {
-        "id" : 2,
-        "nombre" : "Edu"
+        "País" : "España",
+        "Región" : "Euskadi"
     },
     {
-        "id" : 3,
-        "nombre" : "Laura"
+        "País" : "Francia",
+        "Región" : "Borgoña"
     }
 ]
