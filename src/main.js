@@ -15,7 +15,7 @@ function getIdFromButton(){
     return id
 }
 
-function mostrarPaisAsync(id){
+function mostrarPaisThen(id){
     
         getPais(id)
         .then((pais) => {
@@ -35,7 +35,7 @@ document.getElementById("btn").addEventListener("click", () =>{
 
     try{
         let id = getIdFromButton()
-        mostrarPaisAsync(id)
+        mostrarPaisThen(id)
     } catch (error){
         salida.textContent = error.message
     }
